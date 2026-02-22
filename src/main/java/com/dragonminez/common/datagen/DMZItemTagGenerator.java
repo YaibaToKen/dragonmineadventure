@@ -8,6 +8,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -123,6 +124,10 @@ public class DMZItemTagGenerator extends ItemTagsProvider {
 		this.tag(MainTags.Items.NAMEK_SLOG)
 				.add(MainBlocks.NAMEK_SACRED_LOG.get().asItem())
 				.add(MainBlocks.NAMEK_STRIPPED_SACRED_LOG.get().asItem());
+
+		this.tag(MainTags.Items.HIDE_HAIR)
+				.add(MainItems.GREAT_SAIYAMAN_ARMOR.get(ArmorItem.Type.HELMET).get())
+				.add(MainItems.PICCOLO_ARMOR.get(ArmorItem.Type.HELMET).get());
 
 //		this.tag(ItemTags.SWORDS)
 //				.add(MainItems.BACULO_SAGRADO.get())
