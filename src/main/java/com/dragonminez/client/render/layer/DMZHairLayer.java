@@ -1,5 +1,6 @@
 package com.dragonminez.client.render.layer;
 
+import com.dragonminez.Reference;
 import com.dragonminez.client.render.firstperson.dto.FirstPersonManager;
 import com.dragonminez.client.render.hair.HairRenderer;
 import com.dragonminez.client.util.ColorUtils;
@@ -15,8 +16,12 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.Item;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.renderer.GeoRenderer;
@@ -50,7 +55,10 @@ public class DMZHairLayer<T extends AbstractClientPlayer & GeoAnimatable> extend
 		if (FirstPersonManager.shouldRenderFirstPerson(animatable)) return;
 
         var headItem = animatable.getItemBySlot(EquipmentSlot.HEAD);
-        if (!headItem.isEmpty() && !headItem.getItem().getDescriptionId().contains("pothala") && !headItem.getItem().getDescriptionId().contains("scouter") && !headItem.getItem().getDescriptionId().contains("invencible")) return;
+		TagKey<Item> dmzHideHairTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "dragonminez/item/dmz_hide_hair"));
+		if (headItem.is(dmzHideHairTag)) {
+			return;
+		}
 
         var statsCap = StatsProvider.get(StatsCapability.INSTANCE, animatable);
         var stats = statsCap.orElse(new StatsData(animatable));
