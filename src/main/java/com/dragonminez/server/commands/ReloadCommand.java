@@ -2,12 +2,11 @@ package com.dragonminez.server.commands;
 
 import com.dragonminez.common.config.ConfigManager;
 import com.dragonminez.common.network.NetworkHandler;
-import com.dragonminez.common.network.S2C.SyncSagasS2C;
-import com.dragonminez.common.network.S2C.SyncServerConfigS2C;
-import com.dragonminez.common.network.S2C.SyncSideQuestsS2C;
-import com.dragonminez.common.network.S2C.SyncWishesS2C;
+import com.dragonminez.common.network.S2C.*;
 import com.dragonminez.common.quest.SagaManager;
 import com.dragonminez.common.quest.sidequest.SideQuestManager;
+import com.dragonminez.common.stats.StatsCapability;
+import com.dragonminez.common.stats.StatsProvider;
 import com.dragonminez.common.wish.WishManager;
 import com.dragonminez.server.storage.StorageManager;
 import com.mojang.brigadier.CommandDispatcher;
@@ -48,6 +47,12 @@ public class ReloadCommand {
 								ConfigManager.getAllStackForms()
 						), player
 				);
+				StatsProvider.get(StatsCapability.INSTANCE, player).ifPresent(data -> {
+					String raceName = data.getCharacter().getRaceName();
+					if (raceName != null && !raceName.isEmpty()) data.updateTransformationSkillLimits(raceName);
+					else data.getSkills().refreshNonFormSkillMaxLevels();
+					NetworkHandler.sendToTrackingEntityAndSelf(new StatsSyncS2C(player), player);
+				});
 				NetworkHandler.sendToPlayer(new SyncSagasS2C(SagaManager.getAllSagas()), player);
 				NetworkHandler.sendToPlayer(new SyncSideQuestsS2C(SideQuestManager.getAllSideQuests()), player);
 				NetworkHandler.sendToPlayer(new SyncWishesS2C(WishManager.getAllWishes()), player);
