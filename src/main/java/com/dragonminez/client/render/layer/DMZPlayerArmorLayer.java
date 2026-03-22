@@ -57,15 +57,16 @@ public class DMZPlayerArmorLayer<T extends AbstractClientPlayer & GeoAnimatable>
 		};
 		if (slot == null) return null;
 
-		ItemStack stack = null;
+		ItemStack stack = animatable.getInventory().armor.get(slot.getIndex());
 		if (CosmeticArmorCompat.isLoaded()) {
 			ItemStack cosStack = CosmeticArmorCompat.getCosmeticStack(animatable, slot);
-			if (cosStack != null && !cosStack.isEmpty()) stack = cosStack;
+			if (cosStack != null) {
+				if (cosStack.isEmpty()) return null;
+				stack = cosStack;
+			}
 		}
 
-		if (stack == null) stack = animatable.getInventory().armor.get(slot.getIndex());
-
-		if (stack == null || stack.isEmpty()) return null;
+		if (stack.isEmpty()) return null;
 		if (!(stack.getItem() instanceof ArmorItem) && !(stack.getItem() instanceof DbzArmorItem)) return null;
 		if (!stack.canEquip(slot, animatable) && !(stack.getItem() instanceof DbzArmorItem)) return null;
 

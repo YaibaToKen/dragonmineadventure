@@ -4,6 +4,7 @@ import com.dragonminez.Reference;
 import com.dragonminez.client.model.KiBladeModel;
 import com.dragonminez.client.model.KiScytheModel;
 import com.dragonminez.client.model.KiTridentModel;
+import com.dragonminez.client.render.compat.CosmeticArmorCompat;
 import com.dragonminez.client.util.AuraRenderQueue;
 import com.dragonminez.client.util.ColorUtils;
 import com.dragonminez.client.util.ModRenderTypes;
@@ -177,6 +178,13 @@ public class DMZRenderHand extends LivingEntityRenderer<AbstractClientPlayer, Pl
 
 	private void renderDbzArmor(PoseStack ps, MultiBufferSource pBuffer, int pCombinedLight, AbstractClientPlayer player, ModelPart pRendererArm) {
 		ItemStack chestStack = player.getItemBySlot(EquipmentSlot.CHEST);
+		if (CosmeticArmorCompat.isLoaded()) {
+			ItemStack cosmeticStack = CosmeticArmorCompat.getCosmeticStack(player, EquipmentSlot.CHEST);
+			if (cosmeticStack != null) {
+				if (cosmeticStack.isEmpty()) return;
+				chestStack = cosmeticStack;
+			}
+		}
 		if (chestStack.isEmpty()) return;
 
 		String itemId = null;

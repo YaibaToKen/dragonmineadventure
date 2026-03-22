@@ -53,7 +53,10 @@ public class DMZCustomArmorLayer<T extends AbstractClientPlayer & GeoAnimatable>
 		ItemStack stack = animatable.getItemBySlot(EquipmentSlot.CHEST);
 		if (CosmeticArmorCompat.isLoaded()) {
 			ItemStack cosmeticStack = CosmeticArmorCompat.getCosmeticStack(animatable, EquipmentSlot.CHEST);
-			if (cosmeticStack != null) stack = cosmeticStack;
+			if (cosmeticStack != null) {
+				if (cosmeticStack.isEmpty()) return;
+				stack = cosmeticStack;
+			}
 		}
 		if (stack.isEmpty() || !(stack.getItem() instanceof ArmorItem armorItem)) return;
 
