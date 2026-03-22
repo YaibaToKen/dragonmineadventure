@@ -271,6 +271,7 @@
   "gui.dragonminez.lines.toribot.name": "Toribot",
   "gui.dragonminez.lines.toribot.main": "Beep boop! I am Toribot, thanks for visiting me! It's kinda lonely here with King Kai...",
   "gui.dragonminez.lines.generic.createcharacter": "You need to create your character first.",
+  "gui.dmzradar.range": "Range: %s blocks",
   "//": "WISHES",
   "wish.shenron.senzu.name": "Senzu Beans",
   "wish.shenron.senzu.desc": "Receive some Senzu Beans.",

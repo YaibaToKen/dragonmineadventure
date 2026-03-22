@@ -211,7 +211,7 @@ public class ForgeCommonEvents {
 
 	@SubscribeEvent
 	public static void onPlayerChangeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-		if (event.getEntity() instanceof ServerPlayer player) DragonBallsHandler.syncRadar(player.serverLevel());
+		if (event.getEntity() instanceof ServerPlayer player) DragonBallsHandler.syncRadarForPlayer(player);
 	}
 
 	@SubscribeEvent
