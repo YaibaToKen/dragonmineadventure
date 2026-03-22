@@ -215,15 +215,15 @@ public class TickHandler {
 
 	private static void regenerateHealth(ServerPlayer player, StatsData data,
 										 RaceStatsConfig.ClassStats classStats) {
-		int currentHealth = (int) player.getHealth();
+		float currentHealth = player.getHealth();
 		float maxHealth = player.getMaxHealth();
 
 		if (currentHealth < maxHealth) {
 			double baseRegen = classStats.getHealthRegenRate();
 			double regenAmount = maxHealth * baseRegen;
-			if (regenAmount <= 1.0) return;
+			if (regenAmount <= 0.0) return;
 
-			float newHealth = (float) Math.min(maxHealth, currentHealth + Math.ceil(regenAmount));
+			float newHealth = (float) Math.min(maxHealth, currentHealth + regenAmount);
 			player.setHealth(newHealth);
 		}
 	}

@@ -108,7 +108,7 @@ public class StatsCapability {
 	public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
 		if (event.getEntity() instanceof ServerPlayer serverPlayer) {
 			StatsProvider.get(INSTANCE, serverPlayer).ifPresent(data -> {
-				serverPlayer.setHealth(data.getMaxHealth());
+				serverPlayer.setHealth(serverPlayer.getMaxHealth());
 				data.getResources().setCurrentEnergy(data.getMaxEnergy());
 				data.getResources().setCurrentStamina(data.getMaxStamina());
 				NetworkHandler.sendToTrackingEntityAndSelf(new StatsSyncS2C(serverPlayer), serverPlayer);
