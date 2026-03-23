@@ -14,48 +14,48 @@ import java.util.List;
 @Setter
 @Getter
 public class Character {
-    private String race;
-    private String gender;
-    private String characterClass;
+	private String race;
+	private String gender;
+	private String characterClass;
 
-    private String selectedFormGroup = "";
-    private String activeFormGroup = "";
+	private String selectedFormGroup = "";
+	private String activeFormGroup = "";
 	private String selectedForm = "";
-    private String activeForm = "";
-    private final FormMasteries formMasteries = new FormMasteries();
+	private String activeForm = "";
+	private final FormMasteries formMasteries = new FormMasteries();
 	private UsedForms formsUsedBefore = new UsedForms();
 
-    private String selectedStackFormGroup = "";
-    private String activeStackFormGroup = "";
+	private String selectedStackFormGroup = "";
+	private String activeStackFormGroup = "";
 	private String selectedStackForm = "";
-    private String activeStackForm = "";
-    private final FormMasteries stackFormMasteries = new FormMasteries();
+	private String activeStackForm = "";
+	private final FormMasteries stackFormMasteries = new FormMasteries();
 	private UsedForms stackFormsUsedBefore = new UsedForms();
 
 	private boolean hasSaiyanTail = true;
 
-    public static final String GENDER_MALE = "male";
-    public static final String GENDER_FEMALE = "female";
+	public static final String GENDER_MALE = "male";
+	public static final String GENDER_FEMALE = "female";
 
-    public static final String CLASS_WARRIOR = "warrior";
+	public static final String CLASS_WARRIOR = "warrior";
 
-    private int hairId;
-    private CustomHair hairBase = new CustomHair();
+	private int hairId;
+	private CustomHair hairBase = new CustomHair();
 	private CustomHair hairSSJ = new CustomHair();
 	private CustomHair hairSSJ2 = new CustomHair();
 	private CustomHair hairSSJ3 = new CustomHair();
-    private int bodyType;
-    private int eyesType;
-    private int noseType;
-    private int mouthType;
+	private int bodyType;
+	private int eyesType;
+	private int noseType;
+	private int mouthType;
 	private int tattooType;
-    private String bodyColor;
-    private String bodyColor2;
-    private String bodyColor3;
-    private String hairColor;
-    private String eye1Color;
-    private String eye2Color;
-    private String auraColor;
+	private String bodyColor;
+	private String bodyColor2;
+	private String bodyColor3;
+	private String hairColor;
+	private String eye1Color;
+	private String eye2Color;
+	private String auraColor;
 
 	private Boolean armored;
 
@@ -149,9 +149,9 @@ public class Character {
 		this.selectedStackForm = safeString(selectedStackForm);
 	}
 
-    public String getRaceName() {
-        return race != null && !race.isEmpty() ? race : "human";
-    }
+	public String getRaceName() {
+		return race != null && !race.isEmpty() ? race : "human";
+	}
 
 	public boolean canHaveGender() {
 		RaceCharacterConfig raceConfig = ConfigManager.getRaceCharacter(getRaceName());
@@ -166,21 +166,21 @@ public class Character {
 		return new Float[]{0.9375f, 0.9375f, 0.9375f};
 	}
 
-    public CompoundTag save() {
-        CompoundTag tag = new CompoundTag();
+	public CompoundTag save() {
+		CompoundTag tag = new CompoundTag();
 		tag.putString("Race", safeString(race));
 		tag.putString("Gender", safeString(gender));
 		tag.putString("Class", safeString(characterClass));
-        tag.putInt("HairId", hairId);
-	tag.put("HairBase", (hairBase != null ? hairBase : new CustomHair()).save());
-	tag.put("HairSSJ", (hairSSJ != null ? hairSSJ : new CustomHair()).save());
-	tag.put("HairSSJ2", (hairSSJ2 != null ? hairSSJ2 : new CustomHair()).save());
-	tag.put("HairSSJ3", (hairSSJ3 != null ? hairSSJ3 : new CustomHair()).save());
-        tag.putInt("BodyType", bodyType);
-        tag.putInt("EyesType", eyesType);
-        tag.putInt("NoseType", noseType);
-        tag.putInt("MouthType", mouthType);
-        tag.putInt("TattooType", tattooType);
+		tag.putInt("HairId", hairId);
+		tag.put("HairBase", (hairBase != null ? hairBase : new CustomHair()).save());
+		tag.put("HairSSJ", (hairSSJ != null ? hairSSJ : new CustomHair()).save());
+		tag.put("HairSSJ2", (hairSSJ2 != null ? hairSSJ2 : new CustomHair()).save());
+		tag.put("HairSSJ3", (hairSSJ3 != null ? hairSSJ3 : new CustomHair()).save());
+		tag.putInt("BodyType", bodyType);
+		tag.putInt("EyesType", eyesType);
+		tag.putInt("NoseType", noseType);
+		tag.putInt("MouthType", mouthType);
+		tag.putInt("TattooType", tattooType);
 		tag.putString("BodyColor", safeString(bodyColor));
 		tag.putString("BodyColor2", safeString(bodyColor2));
 		tag.putString("BodyColor3", safeString(bodyColor3));
@@ -190,20 +190,20 @@ public class Character {
 		tag.putString("AuraColor", safeString(auraColor));
 		tag.putString("SelectedFormGroup", safeString(selectedFormGroup));
 		tag.putString("CurrentFormGroup", safeString(activeFormGroup));
-	tag.putString("SelectedForm", safeString(selectedForm));
+		tag.putString("SelectedForm", safeString(selectedForm));
 		tag.putString("CurrentForm", safeString(activeForm));
 		tag.putString("SelectedStackFormGroup", safeString(selectedStackFormGroup));
 		tag.putString("CurrentStackFormGroup", safeString(activeStackFormGroup));
-	tag.putString("SelectedStackForm", safeString(selectedStackForm));
+		tag.putString("SelectedStackForm", safeString(selectedStackForm));
 		tag.putString("CurrentStackForm", safeString(activeStackForm));
-        tag.put("FormMasteries", formMasteries.save());
-        tag.put("StackFormMasteries", stackFormMasteries.save());
+		tag.put("FormMasteries", formMasteries.save());
+		tag.put("StackFormMasteries", stackFormMasteries.save());
 		tag.put("FormsUsedBefore", (formsUsedBefore != null ? formsUsedBefore : new UsedForms()).save());
 		tag.put("StackFormsUsedBefore", (stackFormsUsedBefore != null ? stackFormsUsedBefore : new UsedForms()).save());
 		tag.putBoolean("HasSaiyanTail", hasSaiyanTail);
-        tag.putBoolean("isArmored", armored);
-        return tag;
-    }
+		tag.putBoolean("isArmored", armored);
+		return tag;
+	}
 
 	public void load(CompoundTag tag) {
 		if (tag.contains("Race", 8)) {
@@ -222,85 +222,75 @@ public class Character {
 		if (tag.contains("HairSSJ")) this.hairSSJ.load(tag.getCompound("HairSSJ"));
 		if (tag.contains("HairSSJ2")) this.hairSSJ2.load(tag.getCompound("HairSSJ2"));
 		if (tag.contains("HairSSJ3")) this.hairSSJ3.load(tag.getCompound("HairSSJ3"));
-        this.bodyType = tag.getInt("BodyType");
-        this.eyesType = tag.getInt("EyesType");
-        this.noseType = tag.getInt("NoseType");
-        this.mouthType = tag.getInt("MouthType");
-        this.tattooType = tag.getInt("TattooType");
-        this.bodyColor = tag.getString("BodyColor");
-        this.bodyColor2 = tag.getString("BodyColor2");
-        this.bodyColor3 = tag.getString("BodyColor3");
-        this.hairColor = tag.getString("HairColor");
-        this.eye1Color = tag.getString("Eye1Color");
-        this.eye2Color = tag.getString("Eye2Color");
-        this.auraColor = tag.getString("AuraColor");
-        this.selectedFormGroup = tag.getString("SelectedFormGroup");
-        this.activeFormGroup = tag.getString("CurrentFormGroup");
+		this.bodyType = tag.getInt("BodyType");
+		this.eyesType = tag.getInt("EyesType");
+		this.noseType = tag.getInt("NoseType");
+		this.mouthType = tag.getInt("MouthType");
+		this.tattooType = tag.getInt("TattooType");
+		this.bodyColor = tag.getString("BodyColor");
+		this.bodyColor2 = tag.getString("BodyColor2");
+		this.bodyColor3 = tag.getString("BodyColor3");
+		this.hairColor = tag.getString("HairColor");
+		this.eye1Color = tag.getString("Eye1Color");
+		this.eye2Color = tag.getString("Eye2Color");
+		this.auraColor = tag.getString("AuraColor");
+		this.selectedFormGroup = tag.getString("SelectedFormGroup");
+		this.activeFormGroup = tag.getString("CurrentFormGroup");
 		this.selectedForm = tag.getString("SelectedForm");
-        this.activeForm = tag.getString("CurrentForm");
-        if (tag.contains("FormMasteries")) formMasteries.load(tag.getCompound("FormMasteries"));
+		this.activeForm = tag.getString("CurrentForm");
+		if (tag.contains("FormMasteries")) formMasteries.load(tag.getCompound("FormMasteries"));
 		if (tag.contains("FormsUsedBefore")) formsUsedBefore.load(tag.getCompound("FormsUsedBefore"));
-        this.selectedStackFormGroup = tag.getString("SelectedStackFormGroup");
-        this.activeStackFormGroup = tag.getString("CurrentStackFormGroup");
+		this.selectedStackFormGroup = tag.getString("SelectedStackFormGroup");
+		this.activeStackFormGroup = tag.getString("CurrentStackFormGroup");
 		this.selectedStackForm = tag.getString("SelectedStackForm");
-        this.activeStackForm = tag.getString("CurrentStackForm");
-        if (tag.contains("StackFormMasteries")) stackFormMasteries.load(tag.getCompound("StackFormMasteries"));
+		this.activeStackForm = tag.getString("CurrentStackForm");
+		if (tag.contains("StackFormMasteries")) stackFormMasteries.load(tag.getCompound("StackFormMasteries"));
 		if (tag.contains("StackFormsUsedBefore")) stackFormsUsedBefore.load(tag.getCompound("StackFormsUsedBefore"));
 		this.hasSaiyanTail = tag.getBoolean("HasSaiyanTail");
-        this.armored = tag.getBoolean("isArmored");
-    }
+		this.armored = tag.getBoolean("isArmored");
+	}
 
 	public boolean hasActiveForm() {
 		return !activeFormGroup.isEmpty() && !activeForm.isEmpty();
 	}
 
-    public void setActiveForm(String groupName, String formName) {
-        this.activeFormGroup = groupName != null ? groupName : "";
-        this.activeForm = formName != null ? formName : "";
-    }
-
-    public void clearActiveForm() {
-        this.activeFormGroup = "";
-        this.activeForm = "";
-    }
-
-	public void clearSelectedForm() {
-		this.selectedFormGroup = "";
-		this.selectedForm = "";
+	public void setActiveForm(String groupName, String formName) {
+		this.activeFormGroup = groupName != null ? groupName : "";
+		this.activeForm = formName != null ? formName : "";
 	}
 
-    public FormConfig.FormData getActiveFormData() {
-        if (!hasActiveForm()) {
-			return null;
-		}
-        return ConfigManager.getForm(getRaceName(), activeFormGroup, activeForm);
-    }
-
-    public boolean hasActiveStackForm() {
-        return !activeStackFormGroup.isEmpty() && !activeStackForm.isEmpty();
-    }
-
-    public void setActiveStackForm(String groupName, String formName) {
-        this.activeStackFormGroup = groupName != null ? groupName : "";
-        this.activeStackForm = formName != null ? formName : "";
-    }
-
-    public void clearActiveStackForm() {
-        this.activeStackFormGroup = "";
-        this.activeStackForm = "";
-    }
-
-	public void clearSelectedStackForm() {
-		this.selectedStackFormGroup = "";
-		this.selectedStackForm = "";
+	public void clearActiveForm() {
+		this.activeFormGroup = "";
+		this.activeForm = "";
 	}
 
-    public FormConfig.FormData getActiveStackFormData() {
-        if (!hasActiveStackForm()) {
+	public FormConfig.FormData getActiveFormData() {
+		if (!hasActiveForm()) {
 			return null;
 		}
-        return ConfigManager.getStackForm(activeStackFormGroup, activeStackForm);
-    }
+		return ConfigManager.getForm(getRaceName(), activeFormGroup, activeForm);
+	}
+
+	public boolean hasActiveStackForm() {
+		return !activeStackFormGroup.isEmpty() && !activeStackForm.isEmpty();
+	}
+
+	public void setActiveStackForm(String groupName, String formName) {
+		this.activeStackFormGroup = groupName != null ? groupName : "";
+		this.activeStackForm = formName != null ? formName : "";
+	}
+
+	public void clearActiveStackForm() {
+		this.activeStackFormGroup = "";
+		this.activeStackForm = "";
+	}
+
+	public FormConfig.FormData getActiveStackFormData() {
+		if (!hasActiveStackForm()) {
+			return null;
+		}
+		return ConfigManager.getStackForm(activeStackFormGroup, activeStackForm);
+	}
 
 	public void saveAppearance(CompoundTag tag) {
 		tag.putString("BodyColor", safeString(bodyColor));
@@ -322,37 +312,37 @@ public class Character {
 		if (tag.contains("AuraColor")) this.auraColor = tag.getString("AuraColor");
 	}
 
-    public void copyFrom(Character other) {
-        this.race = other.race;
-        this.gender = other.gender;
-        this.characterClass = other.characterClass;
-        this.hairId = other.hairId;
+	public void copyFrom(Character other) {
+		this.race = other.race;
+		this.gender = other.gender;
+		this.characterClass = other.characterClass;
+		this.hairId = other.hairId;
 		this.hairBase = other.hairBase.copy();
 		this.hairSSJ = other.hairSSJ.copy();
 		this.hairSSJ2 = other.hairSSJ2.copy();
 		this.hairSSJ3 = other.hairSSJ3.copy();
-        this.bodyType = other.bodyType;
-        this.eyesType = other.eyesType;
-        this.noseType = other.noseType;
-        this.mouthType = other.mouthType;
-        this.tattooType = other.tattooType;
-        this.bodyColor = other.bodyColor;
-        this.bodyColor2 = other.bodyColor2;
-        this.bodyColor3 = other.bodyColor3;
-        this.hairColor = other.hairColor;
-        this.eye1Color = other.eye1Color;
-        this.eye2Color = other.eye2Color;
-        this.auraColor = other.auraColor;
+		this.bodyType = other.bodyType;
+		this.eyesType = other.eyesType;
+		this.noseType = other.noseType;
+		this.mouthType = other.mouthType;
+		this.tattooType = other.tattooType;
+		this.bodyColor = other.bodyColor;
+		this.bodyColor2 = other.bodyColor2;
+		this.bodyColor3 = other.bodyColor3;
+		this.hairColor = other.hairColor;
+		this.eye1Color = other.eye1Color;
+		this.eye2Color = other.eye2Color;
+		this.auraColor = other.auraColor;
 		this.selectedFormGroup = safeString(other.selectedFormGroup);
 		this.activeFormGroup = safeString(other.activeFormGroup);
 		this.selectedForm = safeString(other.selectedForm);
 		this.activeForm = safeString(other.activeForm);
-        this.formMasteries.copyFrom(other.formMasteries);
+		this.formMasteries.copyFrom(other.formMasteries);
 		this.selectedStackFormGroup = safeString(other.selectedStackFormGroup);
 		this.activeStackFormGroup = safeString(other.activeStackFormGroup);
 		this.selectedStackForm = safeString(other.selectedStackForm);
 		this.activeStackForm = safeString(other.activeStackForm);
-        this.stackFormMasteries.copyFrom(other.stackFormMasteries);
-        this.armored = other.armored;
-    }
+		this.stackFormMasteries.copyFrom(other.stackFormMasteries);
+		this.armored = other.armored;
+	}
 }
