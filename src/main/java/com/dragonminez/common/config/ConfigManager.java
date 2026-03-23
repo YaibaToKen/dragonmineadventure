@@ -535,10 +535,10 @@ public class ConfigManager {
 		config.setDefaultEye2Color("#0E1011");
 		config.setDefaultAuraColor("#7FFFFF");
 
-		config.setFormSkillTpCosts("superform", new Integer[]{20000, 80000, 120000, 160000});
+		config.setFormSkillTpCosts("superform", new Integer[]{8000, 16000, 25000, 40000});
 		config.setFormSkillTpCosts("godform", new Integer[]{});
 		config.setFormSkillTpCosts("legendaryforms", new Integer[]{});
-		config.setFormSkillTpCosts("androidforms", new Integer[]{80000, 120000});
+		config.setFormSkillTpCosts("androidforms", new Integer[]{16000, 40000});
 	}
 
 	private static void setupSaiyanCharacter(RaceCharacterConfig config) {
@@ -560,7 +560,7 @@ public class ConfigManager {
 		config.setDefaultEye2Color("#0E1011");
 		config.setDefaultAuraColor("#7FFFFF");
 
-		config.setFormSkillTpCosts("superform", new Integer[]{20000, 40000, 60000, 80000, 100000, 120000, 140000, 160000});
+		config.setFormSkillTpCosts("superform", new Integer[]{5000, 8000, 12000, 16000, 20000, 25000, 30000, 40000});
 		config.setFormSkillTpCosts("godform", new Integer[]{});
 		config.setFormSkillTpCosts("legendaryforms", new Integer[]{});
 	}
@@ -583,7 +583,7 @@ public class ConfigManager {
 		config.setDefaultEye2Color("#0E1011");
 		config.setDefaultAuraColor("#7FFF00");
 
-		config.setFormSkillTpCosts("superform", new Integer[]{20000, 80000, 120000, 160000});
+		config.setFormSkillTpCosts("superform", new Integer[]{9000, 18000, 30000, 45000});
 		config.setFormSkillTpCosts("godform", new Integer[]{});
 		config.setFormSkillTpCosts("legendaryforms", new Integer[]{});
 	}
@@ -606,7 +606,7 @@ public class ConfigManager {
 		config.setDefaultEye2Color("#FF001D");
 		config.setDefaultAuraColor("#5F00FF");
 
-		config.setFormSkillTpCosts("superform", new Integer[]{20000, 80000, 120000, 160000, 200000});
+		config.setFormSkillTpCosts("superform", new Integer[]{7000, 12000, 20000, 32000, 45000});
 		config.setFormSkillTpCosts("godform", new Integer[]{});
 		config.setFormSkillTpCosts("legendaryforms", new Integer[]{});
 	}
@@ -629,7 +629,7 @@ public class ConfigManager {
 		config.setDefaultEye2Color("#F06F6E");
 		config.setDefaultAuraColor("#1AA700");
 
-		config.setFormSkillTpCosts("superform", new Integer[]{20000, 80000, 120000, 160000});
+		config.setFormSkillTpCosts("superform", new Integer[]{10000, 22000, 34000, 48000});
 		config.setFormSkillTpCosts("godform", new Integer[]{});
 		config.setFormSkillTpCosts("legendaryforms", new Integer[]{});
 	}
@@ -652,7 +652,7 @@ public class ConfigManager {
 		config.setDefaultEye2Color("#B40000");
 		config.setDefaultAuraColor("#FF6DFF");
 
-		config.setFormSkillTpCosts("superform", new Integer[]{20000, 80000, 120000, 160000});
+		config.setFormSkillTpCosts("superform", new Integer[]{9000, 18000, 30000, 44000});
 		config.setFormSkillTpCosts("godform", new Integer[]{});
 		config.setFormSkillTpCosts("legendaryforms", new Integer[]{});
 	}
@@ -687,11 +687,11 @@ public class ConfigManager {
 
 	private static void setupDefaultStats(RaceStatsConfig config) {
 		setupInitialStats(config.getClassStats("warrior"), 10, 5, 10, 10, 5, 5, 0.003, 0.008, 0.012);
-		setupScalingStats(config.getClassStats("warrior"), 1.0, 0.75, 0.5, 0.75, 1.5, 0.5, 1.0);
+		setupScalingStats(config.getClassStats("warrior"), 1.0, 0.75, 0.5, 0.75, 1.5, 0.5, 2.5);
 		setupInitialStats(config.getClassStats("spiritualist"), 5, 10, 5, 5, 10, 10, 0.002, 0.015, 0.008);
-		setupScalingStats(config.getClassStats("spiritualist"), 0.5, 0.5, 0.25, 0.25, 1.0, 1.0, 1.5);
+		setupScalingStats(config.getClassStats("spiritualist"), 0.5, 0.5, 0.25, 0.25, 1.0, 1.0, 3.0);
 		setupInitialStats(config.getClassStats("martialartist"), 5, 10, 10, 10, 5, 5, 0.0035, 0.008, 0.009);
-		setupScalingStats(config.getClassStats("martialartist"), 0.75, 1.0, 0.75, 1.0, 1.75, 0.75, 1.25);
+		setupScalingStats(config.getClassStats("martialartist"), 0.75, 1.0, 0.75, 1.0, 1.75, 0.75, 2.75);
 	}
 
 	private static void setupInitialStats(RaceStatsConfig.ClassStats classStats, int str, int skp, int res, int vit, int pwr, int ene, double healthRegen, double energyRegen, double staminaRegen) {
